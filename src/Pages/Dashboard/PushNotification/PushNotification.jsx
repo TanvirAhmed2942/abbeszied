@@ -51,6 +51,10 @@ function PushNotification() {
               Form: {
                 labelFontSize: 16,
               },
+              Input: {
+                hoverBorderColor: "#00027d",
+                activeBorderColor: "#00027d",
+              },
             },
           }}
         >
@@ -86,7 +90,7 @@ function PushNotification() {
                 trigger={["click"]}
                 className="h-11"
               >
-                <Button className="w-full text-left bg-gradient-to-b from-sky-50 via-white to-sky-50 ">
+                <Button className="w-full text-left bg-gradient-to-b from-[#00017d]/5 via-white to-[#00017d]/5 ">
                   {selectedRecipient}
                   <IoMdArrowDropdown size={20} />
                 </Button>
@@ -98,7 +102,7 @@ function PushNotification() {
               <Button
                 type="block"
                 htmlType="submit"
-                className="w-full bg-smart hover:bg-smart/90 text-white h-11 text-base gap-4"
+                className="w-full bg-abbes hover:bg-abbes/85 text-white h-11 text-base gap-4"
               >
                 Send Notification
                 <FaRegPaperPlane />

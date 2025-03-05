@@ -40,6 +40,15 @@ p {
   color: #ffffff !important;
 }
 
+/* dropdown */
+:where(.css-dev-only-do-not-override-vfy3d8).ant-btn-default:not(:disabled):not(
+    .ant-btn-disabled
+  ):hover {
+  color: #00027d;
+  border-color: #00027d;
+  background: #ffffff;
+}
+
 /* Collapse */
 .ant-collapse > .ant-collapse-item > .ant-collapse-header .ant-collapse-arrow {
   margin-top: 20px;

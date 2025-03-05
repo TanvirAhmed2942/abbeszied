@@ -10,13 +10,13 @@ const defaultText = `A dog is a type of domesticated animal. Known for its loyal
 export const HeadFaq = ({ showModal }) => (
   <div className="flex justify-between items-center py-5">
     <h1 className="text-[20px] font-medium">FAQ</h1>
-    <button
+    <ButtonEDU
       className="bg-smart text-white px-4 py-2.5 rounded-md shadow-md"
       onClick={showModal}
     >
       <PlusOutlined size={24} className="mr-2" />
       Add New
-    </button>
+    </ButtonEDU>
   </div>
 );
 
@@ -103,7 +103,7 @@ export default function FaqCollapse() {
           />
         </div>
       ),
-      children: <p className="border-l-2 border-[#18a0fb] pl-4">{answer}</p>,
+      children: <p className="border-l-2 border-[#00027d] pl-4">{answer}</p>,
     }));
 
   return (
@@ -119,7 +119,7 @@ export default function FaqCollapse() {
             className="flex items-center justify-center w-6 h-6 transition-transform duration-300 "
             style={{ transform: `rotate(${isActive ? 180 : 0}deg)` }}
           >
-            <PlusOutlined className="text-smart" />
+            <PlusOutlined className="text-abbes" />
           </div>
         )}
         items={getItems()}

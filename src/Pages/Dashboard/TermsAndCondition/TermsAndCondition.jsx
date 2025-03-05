@@ -1,5 +1,6 @@
 import React, { useRef, useState, useMemo } from "react";
 import JoditEditor from "jodit-react";
+import ButtonEDU from "../../../components/common/ButtonEDU";
 
 function TermsAndCondition() {
   const editor = useRef(null);
@@ -68,7 +69,7 @@ function TermsAndCondition() {
   return (
     <>
       <div className="w-full">
-        <h1 className="text-[20px] font-medium py-5">Terms And Condition</h1>
+        <h1 className="text-[20px] font-medium pt-5">Terms And Condition</h1>
         <div className="w-5/5 bg-black">
           <JoditEditor
             className="my-5 bg-red-300"
@@ -79,12 +80,12 @@ function TermsAndCondition() {
           />
         </div>
         <div className="flex items-center justify-end">
-          <button
+          <ButtonEDU
             className="bg-smart text-[16px] text-white px-10 py-2.5 mt-5 rounded-md"
             onClick={handleSave}
           >
             Save
-          </button>
+          </ButtonEDU>
         </div>
       </div>
     </>
