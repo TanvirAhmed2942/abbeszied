@@ -185,6 +185,10 @@ const AdminList = () => {
               Form: {
                 labelFontSize: 16,
               },
+              Input: {
+                hoverBorderColor: "#00027d",
+                activeBorderColor: "#00027d",
+              },
             },
           }}
         >
@@ -262,6 +266,10 @@ const AdminList = () => {
             components: {
               Form: {
                 labelFontSize: 16,
+              },
+              Input: {
+                hoverBorderColor: "#00027d",
+                activeBorderColor: "#00027d",
               },
             },
           }}
@@ -345,13 +353,24 @@ const AdminList = () => {
 const TableHead = ({ searchText, handleSearch, onAdd }) => {
   return (
     <div className="flex justify-between items-center mb-4">
-      <Input
-        placeholder="Search admins..."
-        value={searchText}
-        onChange={handleSearch}
-        className="w-1/3 h-10"
-        allowClear
-      />
+      <ConfigProvider
+        theme={{
+          components: {
+            Input: {
+              hoverBorderColor: "#00027d",
+              activeBorderColor: "#00027d",
+            },
+          },
+        }}
+      >
+        <Input
+          placeholder="Search admins..."
+          value={searchText}
+          onChange={handleSearch}
+          className="w-1/3 h-10"
+          allowClear
+        />
+      </ConfigProvider>
       <ButtonEDU actionType="add" onClick={onAdd}>
         <div className="flex items-center justify-center gap-2">
           <FaPlus size={15} /> Add new

@@ -1,5 +1,5 @@
 import React from "react";
-import { Tabs, ConfigProvider } from "antd";
+import { Tabs, ConfigProvider, Radio } from "antd";
 import AdminList from "./AdminList";
 import AdminPassword from "./AdminPassword";
 
@@ -24,6 +24,8 @@ function Setting() {
       theme={{
         components: {
           Tabs: {
+            cardBg: "none",
+            border: "none",
             inkBarColor: "#00017D",
             itemHoverColor: "black",
             itemSelectedColor: "#00017D",
@@ -35,6 +37,7 @@ function Setting() {
     >
       <Tabs
         defaultActiveKey="1"
+        type="card"
         items={items}
         onChange={onChange}
         className="py-8 font-medium "
