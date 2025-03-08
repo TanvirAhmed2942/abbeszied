@@ -4,7 +4,7 @@ import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 import GetPageName from "../../../components/common/GetPageName";
 import PopOver from "../../../components/common/PopOver";
 import ServiceEditModal from "./ServiceEditModal"; // Import modal
-
+import man from "../../../assets/man.png";
 function CoachList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -148,7 +148,13 @@ const columns = (handleEdit, handleBan) => [
     key: "coachName",
     render: (text, record) => (
       <div className="flex items-center gap-2.5">
-        <Avatar src={record.avatar} alt={text} shape="circle" size={40} />
+        <Avatar
+          src={record.avatar}
+          alt={text}
+          shape="circle"
+          size={40}
+          className="border border-abbes"
+        />
         <div className="flex flex-col">
           <span>{text}</span>
           <span>{record.email}</span>
@@ -198,7 +204,7 @@ const data = [
     phoneNumber: "1234567890",
     address: "10 Warehouse Road, Apapa, Lagos",
     earn: "5000",
-    avatar: "",
+    avatar: man,
     banned: false, // Add banned field
   },
   {
@@ -209,7 +215,7 @@ const data = [
     phoneNumber: "1234567891",
     address: "15 Broad Street, Lagos",
     earn: "4500",
-    avatar: "",
+    avatar: man,
     banned: false, // Add banned field
   },
 ];

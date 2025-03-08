@@ -103,7 +103,7 @@ export default function FaqCollapse() {
           />
         </div>
       ),
-      children: <p className="border-l-2 border-[#00027d] pl-4">{answer}</p>,
+      children: <p className="border-l-2 border-abbes pl-4">{answer}</p>,
     }));
 
   return (

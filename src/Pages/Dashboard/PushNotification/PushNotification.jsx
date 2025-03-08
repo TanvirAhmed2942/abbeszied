@@ -88,7 +88,7 @@ function PushNotification() {
               <Dropdown
                 overlay={<Menu onClick={handleMenuClick} items={items} />}
                 trigger={["click"]}
-                className="h-11"
+                className="h-9"
               >
                 <Button className="w-full text-left bg-gradient-to-b from-[#00017d]/5 via-white to-[#00017d]/5 ">
                   {selectedRecipient}

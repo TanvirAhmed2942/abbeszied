@@ -116,7 +116,7 @@ function ChatRoom() {
             <div
               className={`p-3 rounded-lg shadow-md max-w-[60%] ${
                 msg.sender === "me"
-                  ? "bg-blue-500 text-white rounded-br-none"
+                  ? "bg-abbes text-white rounded-br-none"
                   : "bg-gray-200 text-black rounded-tl-none"
               }`}
             >
@@ -203,7 +203,7 @@ function ChatRoom() {
         />
 
         <button
-          className="ml-2 bg-blue-500 text-white p-3 rounded-lg"
+          className="ml-2 bg-abbes text-white p-3 rounded-lg"
           onClick={sendMessage}
         >
           <FaPaperPlane size={20} />

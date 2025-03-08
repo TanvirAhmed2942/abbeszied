@@ -3,9 +3,8 @@ import { Table, Avatar, ConfigProvider, Input, Button } from "antd";
 import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 import GetPageName from "../../../components/common/GetPageName";
 import PopOver from "../../../components/common/PopOver";
-import CustomerEditModal from "./TraineeEditModal";
 import TraineeEditModal from "./TraineeEditModal";
-
+import man from "../../../assets/man.png";
 function TraineeList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -149,7 +148,13 @@ const columns = (handleEdit, handleBan) => [
     key: "traineeName",
     render: (text, record) => (
       <div className="flex items-center gap-2.5">
-        <Avatar src={record.avatar} alt={text} shape="circle" size={40} />
+        <Avatar
+          src={record.avatar}
+          alt={text}
+          shape="circle"
+          size={40}
+          className="border border-abbes"
+        />
         <div className="flex flex-col">
           <span>{text}</span>
           <span>{record.email}</span>
@@ -195,7 +200,7 @@ const data = [
     phoneNumber: "1234567890",
     address: "10 Warehouse Road, Apapa, Lagos",
     spent: "5000",
-    avatar: "",
+    avatar: man,
     banned: false, // Add banned field
   },
   {
@@ -206,7 +211,7 @@ const data = [
     phoneNumber: "1234567891",
     address: "15 Broad Street, Lagos",
     spent: "4500",
-    avatar: "",
+    avatar: man,
     banned: false, // Add banned field
   },
 ];

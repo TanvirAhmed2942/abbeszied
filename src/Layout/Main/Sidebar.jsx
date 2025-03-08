@@ -1,6 +1,7 @@
 import { FaHandsHelping } from "react-icons/fa";
 import {
   FaDiagramProject,
+  FaGoogleScholar,
   FaPersonDotsFromLine,
   FaPersonWalkingLuggage,
   FaQuoteRight,
@@ -78,6 +79,15 @@ const Sidebar = ({ isCollapsed }) => {
             <Link to="/coach-list">Coach</Link>
           ) : (
             <Link to="/coach-list">Coach</Link>
+          ),
+        },
+        {
+          key: "/corporate-list",
+          icon: <FaGoogleScholar size={24} />,
+          label: isCollapsed ? (
+            <Link to="/corporate-list">Corporate</Link>
+          ) : (
+            <Link to="/corporate-list">Corporate</Link>
           ),
         },
       ],

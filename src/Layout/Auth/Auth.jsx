@@ -13,7 +13,7 @@ const Auth = () => {
       <div
         style={{
           //   backgroundImage: `url('${backgroundImage}')`,
-          backgroundColor: "#f8f8f8 ",
+          backgroundColor: "#fff3e7 ",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",

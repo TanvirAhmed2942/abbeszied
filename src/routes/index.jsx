@@ -30,6 +30,7 @@ import SupportChat from "../Pages/Dashboard/SupportChat/SupportChat.jsx";
 import ChatRoom from "../Pages/Dashboard/SupportChat/ChatRoom.jsx";
 import TraineeList from "../Pages/Dashboard/Trainee/TraineeList.jsx";
 import CoachList from "../Pages/Dashboard/Coach/CoachList.jsx";
+import CorporateList from "../Pages/Dashboard/CorporateList/CorporateList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,7 +52,10 @@ const router = createBrowserRouter([
         path: "/transaction",
         element: <Transaction />,
       },
-
+      {
+        path: "/corporate-list",
+        element: <CorporateList />,
+      },
       {
         path: "/trainee-list",
         element: <TraineeList />,

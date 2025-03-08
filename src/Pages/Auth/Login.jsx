@@ -74,7 +74,7 @@ const Login = () => {
           </Form.Item>
 
           <a
-            className="login-form-forgot text-smart/80 hover:text-smart font-semibold"
+            className="login-form-forgot text-abbes/80 hover:text-abbes font-semibold"
             href="/auth/forgot-password"
           >
             Forgot password
@@ -94,7 +94,7 @@ const Login = () => {
 
               marginTop: 20,
             }}
-            className="flex items-center justify-center bg-smart hover:bg-smart/90 rounded-lg text-base"
+            className="flex items-center justify-center bg-abbes hover:bg-abbes/90 rounded-lg text-base"
           >
             {/* {isLoading? < Spinner/> : "Sign in"} */} Sign in
           </button>
