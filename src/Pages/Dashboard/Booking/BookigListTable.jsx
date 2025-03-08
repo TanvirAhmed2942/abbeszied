@@ -7,21 +7,73 @@ import {
   Table,
   Typography,
   ConfigProvider,
-  Button,
 } from "antd";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit3 } from "react-icons/fi";
 import GetPageName from "../../../components/common/GetPageName";
 import SelectDuration from "../../../components/common/SelectDuration";
+import { nanoid } from "@reduxjs/toolkit";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 
-const originData = Array.from({ length: 20 }).map((_, i) => ({
-  key: i.toString(),
-  bookingID: `BKG-${1000 + i}`,
-  customername: `Edward ${i}`,
-  serviceProvider: `Provider ${i}`,
-  status: i % 2 === 0 ? "Confirmed" : "Pending",
-  scheduledTime: `2025-02-2${i} 10:00 AM`,
-  location: `London Park no. ${i}`,
+// Add the custom parse format plugin to dayjs
+dayjs.extend(customParseFormat);
+const date = new Date().toLocaleString();
+
+const originData = [
+  {
+    bookingID: nanoid(),
+    customername: "Swapnil Patel",
+    coach: "Tanvir Ahmed",
+    status: "Completed",
+    scheduledTime: date,
+    location: "Central Park, NY",
+  },
+  {
+    bookingID: nanoid(),
+    customername: "Riya Sharma",
+    coach: "David Wilson",
+    status: "Pending",
+    scheduledTime: date,
+    location: "Hyde Park, London",
+  },
+  {
+    bookingID: nanoid(),
+    customername: "Amit Kumar",
+    coach: "Sophia Lee",
+    status: "Cancelled",
+    scheduledTime: date,
+    location: "Golden Gate Park, SF",
+  },
+  {
+    bookingID: nanoid(),
+    customername: "Emily Davis",
+    coach: "Michael Brown",
+    status: "Completed",
+    scheduledTime: date,
+    location: "Millennium Park, Chicago",
+  },
+  {
+    bookingID: nanoid(),
+    customername: "John Doe",
+    coach: "Chris Martin",
+    status: "In Progress",
+    scheduledTime: date,
+    location: "Sydney Olympic Park, AU",
+  },
+];
+
+// Add keys to the original data
+const dataWithKeys = originData.map((item) => ({
+  ...item,
+  key: item.bookingID,
+  // Add a searchable version of the date that includes the formatted date
+  searchableTime:
+    item.scheduledTime +
+    " " +
+    dayjs(item.scheduledTime, "D/M/YYYY hh:mm A").format(
+      "DD MMM YYYY, hh:mm A"
+    ),
 }));
 
 const EditableCell = ({
@@ -52,7 +104,7 @@ const EditableCell = ({
 
 const BookingListTable = () => {
   const [form] = Form.useForm();
-  const [data, setData] = useState(originData);
+  const [data, setData] = useState(dataWithKeys);
   const [searchText, setSearchText] = useState("");
   const [editingKey, setEditingKey] = useState("");
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
@@ -72,7 +124,18 @@ const BookingListTable = () => {
       const newData = [...data];
       const index = newData.findIndex((item) => item.key === key);
       if (index > -1) {
-        newData[index] = { ...newData[index], ...row };
+        const item = newData[index];
+        // If scheduled time has changed, update the searchable time as well
+        if (row.scheduledTime && row.scheduledTime !== item.scheduledTime) {
+          row.searchableTime =
+            row.scheduledTime +
+            " " +
+            dayjs(row.scheduledTime, "M/D/YYYY hh:mm A").format(
+              "DD MMM YYYY, hh:mm A"
+            );
+        }
+
+        newData[index] = { ...item, ...row };
         setData(newData);
       }
       setEditingKey("");
@@ -85,37 +148,67 @@ const BookingListTable = () => {
     setData(data.filter((item) => item.key !== key));
   };
 
-  const filteredData = data.filter((item) =>
-    Object.values(item).some((val) =>
-      String(val).toLowerCase().includes(searchText.toLowerCase())
-    )
-  );
+  // Very simple filtering approach that works with the original data
+  const filteredData = data.filter((item) => {
+    if (!searchText) return true;
+
+    const searchLower = searchText.toLowerCase();
+
+    // Check each value in the item
+    return Object.values(item).some(
+      (val) => val && String(val).toLowerCase().includes(searchLower)
+    );
+  });
 
   const columns = [
-    { title: "Booking ID", dataIndex: "bookingID", width: "10%" },
+    { title: "Booking ID", dataIndex: "bookingID", width: "5%" },
     {
       title: "Customer",
       dataIndex: "customername",
       width: "20%",
       editable: true,
     },
+    { title: "Coach", dataIndex: "coach", width: "20%", editable: true },
     {
-      title: "Service Provider",
-      dataIndex: "serviceProvider",
-      width: "20%",
+      title: "Status",
+      dataIndex: "status",
+      width: "10%",
       editable: true,
+      render: (_, record) => {
+        return record.status === "Completed" ? (
+          <span className="text-green-600">completed</span>
+        ) : record.status === "Pending" ? (
+          <span className="text-yellow-400">Pending</span>
+        ) : record.status === "Cancelled" ? (
+          <span className="text-blue-600">Cancelled</span>
+        ) : record.status === "In Progress" ? (
+          <span className="text-red-600">In Progress</span>
+        ) : null;
+      },
     },
-    { title: "Status", dataIndex: "status", width: "10%", editable: true },
     {
       title: "Scheduled Time",
       dataIndex: "scheduledTime",
       width: "20%",
       editable: true,
+      // render: (scheduledTime) => {
+      //   const date = dayjs(scheduledTime, "D/M/YYYY hh:mm A");
+      //   if (date.isValid()) {
+      //     return <p>{date.format("DD MMM YYYY, hh:mm A")}</p>;
+      //   }
+      //   return <p>{scheduledTime}</p>;
+      // },
+      render: (scheduledTime) => {
+        const date = dayjs(scheduledTime, "M/D/YYYY hh:mm A"); // Correcting the format
+        if (date.isValid()) {
+          return <p>{date.format("DD MMM YYYY, hh:mm A")}</p>;
+        }
+        return <p>{scheduledTime}</p>;
+      },
     },
     { title: "Location", dataIndex: "location", width: "25%", editable: true },
     {
       title: "Action",
-
       dataIndex: "action",
       render: (_, record) => {
         const editable = isEditing(record);
@@ -137,7 +230,7 @@ const BookingListTable = () => {
             <button
               disabled={editingKey !== ""}
               onClick={() => edit(record)}
-              className=" hover:text-sky-600"
+              className="hover:text-sky-600"
             >
               <FiEdit3 size={20} />
             </button>
@@ -145,7 +238,7 @@ const BookingListTable = () => {
               title="Are you sure to delete?"
               onConfirm={() => handleDelete(record.key)}
             >
-              <button className=" hover:text-red-600">
+              <button className="hover:text-red-600">
                 <RiDeleteBin6Line size={20} />
               </button>
             </Popconfirm>
@@ -182,13 +275,11 @@ const BookingListTable = () => {
           Pagination: {
             borderRadius: "3px",
             itemActiveBg: "#18a0fb",
-            // itemBg: "#000000",
           },
-
           Button: {
-            defaultHoverBg: "#18a0fb ",
+            defaultHoverBg: "#18a0fb",
             defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb ",
+            defaultHoverBorderColor: "#18a0fb",
           },
         },
       }}
@@ -209,7 +300,10 @@ const BookingListTable = () => {
 
       <Form form={form} component={false}>
         <Table
-          rowSelection={{ selectedRowKeys, onChange: setSelectedRowKeys }}
+          rowSelection={{
+            selectedRowKeys,
+            onChange: setSelectedRowKeys,
+          }}
           components={{ body: { cell: EditableCell } }}
           bordered
           dataSource={filteredData}

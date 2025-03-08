@@ -38,13 +38,13 @@ function AdminPassword() {
       theme={{
         components: {
           Card: {
-            headerBg: "#00027d",
+            headerBg: "#fd7d00",
             headerHeight: "30px",
             headerPadding: "5px",
           },
           Input: {
-            hoverBorderColor: "#00027d",
-            activeBorderColor: "#00027d",
+            hoverBorderColor: "#fd7d00",
+            activeBorderColor: "#fd7d00",
           },
         },
       }}

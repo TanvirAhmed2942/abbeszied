@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { Table, Avatar, ConfigProvider, Input, Button } from "antd";
 import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
-
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoEye } from "react-icons/io5";
-
+import man from "../../../assets/man.png";
 import GetPageName from "../../../components/common/GetPageName";
-
+import dayjs from "dayjs";
 // UserAvatar Component
-const UserAvatar = ({ shop }) => (
+const UserAvatar = () => (
   <div className="flex gap-2 items-center">
-    <Avatar shape="circle" size={30} src={"shop"} />
+    <Avatar
+      shape="circle"
+      size={40}
+      src={man}
+      className="border border-abbes"
+    />
     <p>John Doe</p>
   </div>
 );
@@ -106,7 +110,7 @@ function Transaction() {
       title: "Date",
       dataIndex: "date",
       key: "date",
-      render: (date) => <p>{new Date(date).toLocaleDateString()}</p>,
+      render: (date) => <p>{dayjs(date).format("DD MMM YY")}</p>,
     },
     {
       title: "Name",
@@ -153,7 +157,7 @@ function Transaction() {
         <div className="flex gap-4">
           <IoEye
             style={{ fontSize: 24 }}
-            className="text-black hover:text-blue-500 cursor-pointer"
+            className="text-black hover:text-abbes cursor-pointer"
           />
           <RiDeleteBin6Line
             style={{ fontSize: 24 }}

@@ -3,9 +3,10 @@ import { Table, Avatar, ConfigProvider, Input, Button } from "antd";
 import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 import GetPageName from "../../../components/common/GetPageName";
 import PopOver from "../../../components/common/PopOver";
-import ServiceEditModal from "./ServiceEditModal"; // Import modal
+import CustomerEditModal from "./TraineeEditModal";
+import TraineeEditModal from "./TraineeEditModal";
 
-function ServiceProvidersList() {
+function TraineeList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [userData, setUserData] = useState(data);
@@ -18,12 +19,12 @@ function ServiceProvidersList() {
 
   const filteredData = userData.filter(
     (user) =>
-      user.providersname.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.traineeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.phoneNumber.includes(searchQuery) ||
-      user.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      // user.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      user.earn.toLowerCase().includes(searchQuery.toLowerCase())
+      user.spent.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const rowSelection = {
@@ -45,7 +46,7 @@ function ServiceProvidersList() {
       )
     );
     alert(
-      `${provider.providersname} has been ${
+      `${provider.traineeName} has been ${
         provider.banned ? "unbanned" : "banned"
       }`
     );
@@ -82,9 +83,13 @@ function ServiceProvidersList() {
             itemActiveBg: "#18a0fb",
           },
           Button: {
-            defaultHoverBg: "#18a0fb ",
+            defaultHoverBg: "#fd7d00 ",
             defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb ",
+            defaultHoverBorderColor: "#fd7d00 ",
+          },
+          Input: {
+            hoverBorderColor: "#fd7d00",
+            activeBorderColor: "#fd7d00",
           },
         },
       }}
@@ -103,7 +108,7 @@ function ServiceProvidersList() {
             <Button
               icon={<DeleteOutlined />}
               onClick={handleDeleteSelected}
-              className="bg-smart hover:bg-smart text-white border-none h-9"
+              className="bg-abbes/90 hover:bg-abbes text-white border-none h-9"
             >
               Delete Selected
             </Button>
@@ -125,7 +130,7 @@ function ServiceProvidersList() {
         }}
       />
       {/* Edit Modal */}
-      <ServiceEditModal
+      <TraineeEditModal
         isModalOpen={isModalOpen}
         handleCancel={() => setIsModalOpen(false)}
         providerData={selectedProvider}
@@ -135,13 +140,13 @@ function ServiceProvidersList() {
   );
 }
 
-export default ServiceProvidersList;
+export default TraineeList;
 
 const columns = (handleEdit, handleBan) => [
   {
-    title: "Service Provider Name",
-    dataIndex: "providersname",
-    key: "providersname",
+    title: "Name",
+    dataIndex: "traineeName",
+    key: "traineeName",
     render: (text, record) => (
       <div className="flex items-center gap-2.5">
         <Avatar src={record.avatar} alt={text} shape="circle" size={40} />
@@ -152,15 +157,12 @@ const columns = (handleEdit, handleBan) => [
       </div>
     ),
   },
-  {
-    title: "Category",
-    dataIndex: "category",
-    key: "category",
-  },
+
   {
     title: "Phone Number",
     dataIndex: "phoneNumber",
     key: "phoneNumber",
+    render: (_, record) => <span>+{record.phoneNumber}</span>,
   },
   {
     title: "Address",
@@ -168,9 +170,10 @@ const columns = (handleEdit, handleBan) => [
     key: "address",
   },
   {
-    title: "Earn",
-    dataIndex: "earn",
-    key: "earn",
+    title: "Spent",
+    dataIndex: "spent",
+    key: "spent",
+    render: (_, record) => <span>${record.spent}</span>,
   },
   {
     key: "action",
@@ -186,23 +189,23 @@ const columns = (handleEdit, handleBan) => [
 const data = [
   {
     key: 1,
-    providersname: "John Doe",
+    traineeName: "John Doe",
     email: "johndoe@gmail.com",
-    category: "Plumbing",
-    phoneNumber: "+1234567890",
+
+    phoneNumber: "1234567890",
     address: "10 Warehouse Road, Apapa, Lagos",
-    earn: "$5000",
+    spent: "5000",
     avatar: "",
     banned: false, // Add banned field
   },
   {
     key: 2,
-    providersname: "Jane Smith",
+    traineeName: "Jane Smith",
     email: "janesmith@gmail.com",
-    category: "Electrical",
-    phoneNumber: "+1234567891",
+
+    phoneNumber: "1234567891",
     address: "15 Broad Street, Lagos",
-    earn: "$4500",
+    spent: "4500",
     avatar: "",
     banned: false, // Add banned field
   },

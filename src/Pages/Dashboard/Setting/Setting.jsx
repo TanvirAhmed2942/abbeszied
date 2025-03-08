@@ -26,9 +26,9 @@ function Setting() {
           Tabs: {
             cardBg: "none",
             border: "none",
-            inkBarColor: "#00017D",
+            inkBarColor: "#fd7d00",
             itemHoverColor: "black",
-            itemSelectedColor: "#00017D",
+            itemSelectedColor: "#fd7d00",
             titleFontSize: "18px",
             horizontalMargin: "0 0 30px 0",
           },

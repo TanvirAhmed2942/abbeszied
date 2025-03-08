@@ -14,13 +14,12 @@ import Notifications from "../Pages/Dashboard/Notifications";
 import AdminProfile from "../Pages/Dashboard/AdminProfile/AdminProfile";
 
 import TermsAndCondition from "../Pages/Dashboard/TermsAndCondition/TermsAndCondition";
-import ServiceProvidersList from "../Pages/Dashboard/ServiceProvider/ServiceProvidersList.jsx";
+
 import Transaction from "../Pages/Dashboard/Transaction/Transaction.jsx";
 import Setting from "../Pages/Dashboard/Setting/Setting.jsx";
 import FaqCollapse from "../Pages/Dashboard/FAQ/FaqCollapse.jsx";
 import Contact from "../Pages/Dashboard/Contact/Contact.jsx";
 
-import Customer from "../Pages/Dashboard/Customer/Customer.jsx";
 import PushNotification from "../Pages/Dashboard/PushNotification/PushNotification.jsx";
 
 import BookingList from "../Pages/Dashboard/Booking/BookingList.jsx";
@@ -29,6 +28,8 @@ import ServiceList from "../Pages/Dashboard/Service/ServiceList/ServiceList.jsx"
 import SpecificService from "../Pages/Dashboard/DyanamicPage/SpecificService.jsx";
 import SupportChat from "../Pages/Dashboard/SupportChat/SupportChat.jsx";
 import ChatRoom from "../Pages/Dashboard/SupportChat/ChatRoom.jsx";
+import TraineeList from "../Pages/Dashboard/Trainee/TraineeList.jsx";
+import CoachList from "../Pages/Dashboard/Coach/CoachList.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,8 +43,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/service-provider-list",
-        element: <ServiceProvidersList />,
+        path: "/coach-list",
+        element: <CoachList />,
       },
 
       {
@@ -52,8 +53,8 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/customer-list",
-        element: <Customer />,
+        path: "/trainee-list",
+        element: <TraineeList />,
       },
       {
         path: "/booking-list",

@@ -14,6 +14,8 @@ import {
 import { MoreOutlined, DeleteFilled, EditFilled } from "@ant-design/icons";
 
 import ButtonEDU from "../../../components/common/ButtonEDU";
+import { FiEdit2 } from "react-icons/fi";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const AdminList = () => {
   // Initial data
@@ -186,8 +188,8 @@ const AdminList = () => {
                 labelFontSize: 16,
               },
               Input: {
-                hoverBorderColor: "#00027d",
-                activeBorderColor: "#00027d",
+                hoverBorderColor: "#fd7d00",
+                activeBorderColor: "#fd7d00",
               },
             },
           }}
@@ -268,8 +270,8 @@ const AdminList = () => {
                 labelFontSize: 16,
               },
               Input: {
-                hoverBorderColor: "#00027d",
-                activeBorderColor: "#00027d",
+                hoverBorderColor: "#fd7d00",
+                activeBorderColor: "#fd7d00",
               },
             },
           }}
@@ -357,8 +359,8 @@ const TableHead = ({ searchText, handleSearch, onAdd }) => {
         theme={{
           components: {
             Input: {
-              hoverBorderColor: "#00027d",
-              activeBorderColor: "#00027d",
+              hoverBorderColor: "#fd7d00",
+              activeBorderColor: "#fd7d00",
             },
           },
         }}
@@ -420,13 +422,19 @@ const columns = (onEdit, onDelete) => [
     render: (_, record) => (
       <Popover
         content={
-          <div className="flex gap-3">
-            <Button onClick={() => onEdit(record)}>
-              <EditFilled />
-            </Button>
-            <Button onClick={() => onDelete(record)} danger>
-              <DeleteFilled />
-            </Button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => onEdit(record)}
+              className="bg-sky-400/50 hover:bg-sky-400 p-2 rounded-lg"
+            >
+              <FiEdit2 size={15} />
+            </button>
+            <button
+              onClick={() => onDelete(record)}
+              className="bg-red-400/50 hover:bg-red-400 p-2 rounded-lg"
+            >
+              <RiDeleteBin6Line size={15} />
+            </button>
           </div>
         }
         trigger="hover"

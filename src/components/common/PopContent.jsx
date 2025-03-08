@@ -4,7 +4,7 @@ import { DeleteFilled, EditFilled } from "@ant-design/icons";
 import { HiDotsVertical } from "react-icons/hi";
 import { FaBan } from "react-icons/fa";
 import GetPageName from "./GetPageName";
-import EditModal from "../../Pages/Dashboard/ServiceProvider/ServiceEditModal";
+import EditModal from "../../Pages/Dashboard/Coach/ServiceEditModal";
 
 const FaqPopover = ({ onEdit, onDelete }) => {
   const [isOpen, setIsOpen] = useState(false);

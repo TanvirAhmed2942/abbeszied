@@ -9,7 +9,7 @@ function AppDownloadStat() {
     { name: "Android", value: 6000 },
   ];
 
-  const COLORS = ["#008DFF", "#A7D8FF"]; // iOS and Android colors
+  const COLORS = ["#ff562f", "#fd7d00"]; // iOS and Android colors
 
   // Filtered data based on selection
   const data =
@@ -106,12 +106,12 @@ export default AppDownloadStat;
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
-      <div className="relative flex items-center ml-4">
+      <div className="relative flex items-center ml-4 ">
         {/* Arrow (pointing left) */}
-        <div className="absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white -left-2"></div>
+        <div className="absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white -left-1"></div>
 
         {/* Tooltip Content */}
-        <div className="bg-white p-2 text-black rounded shadow-md">
+        <div className="bg-abbes px-2 py-.5 text-black rounded-xl shadow-md z-50">
           {payload.map((pld, index) => (
             <div key={index}>{pld.value}K</div>
           ))}

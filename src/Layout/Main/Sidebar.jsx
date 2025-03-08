@@ -1,5 +1,10 @@
 import { FaHandsHelping } from "react-icons/fa";
-import { FaDiagramProject, FaQuoteRight } from "react-icons/fa6";
+import {
+  FaDiagramProject,
+  FaPersonDotsFromLine,
+  FaPersonWalkingLuggage,
+  FaQuoteRight,
+} from "react-icons/fa6";
 import { CgTemplate } from "react-icons/cg";
 import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
@@ -17,11 +22,13 @@ import {
   RiSettings5Line,
 } from "react-icons/ri";
 import { MdHandyman, MdOutlineHomeRepairService } from "react-icons/md";
-// import qilocoLogo from "../../assets/quiloco/qilocoLogo.png";
+import logo from "../../assets/logo.png";
+import minilogo from "../../assets/minilogo.png";
 import { MdOutlinePrivacyTip } from "react-icons/md";
 import { MdHomeRepairService } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { icons } from "antd/es/image/PreviewGroup";
+import { min } from "moment/moment";
 
 const Sidebar = ({ isCollapsed }) => {
   const location = useLocation();
@@ -45,46 +52,37 @@ const Sidebar = ({ isCollapsed }) => {
       key: "/booking-list",
       icon: <LuClipboardList size={25} />,
       label: isCollapsed ? (
-        <Link to="/booking-list">Bookings</Link>
+        <Link to="/booking-list ">Bookings</Link>
       ) : (
         <Link to="/booking-list">Bookings</Link>
       ),
     },
     {
       key: "subMenuSetting2",
-      icon: <HiOutlineUsers size={24} className="text-black" />,
+      icon: <HiOutlineUsers size={24} className="text-white" />,
       label: "User",
       children: [
         {
-          key: "/customer-list",
-          icon: <HiUsers size={23} />,
+          key: "/trainee-list",
+          icon: <FaPersonDotsFromLine size={23} />,
           label: isCollapsed ? (
-            <Link to="/customer-list">customer</Link>
+            <Link to="/trainee-list">Trainee</Link>
           ) : (
-            <Link to="/customer-list">customer</Link>
+            <Link to="/trainee-list">Trainee</Link>
           ),
         },
         {
-          key: "/service-provider-list",
-          icon: <FaHandsHelping size={24} />,
+          key: "/coach-list",
+          icon: <FaPersonWalkingLuggage size={24} />,
           label: isCollapsed ? (
-            <Link to="/service-provider-list">serviceproviders</Link>
+            <Link to="/coach-list">Coach</Link>
           ) : (
-            <Link to="/service-provider-list">serviceproviders</Link>
+            <Link to="/coach-list">Coach</Link>
           ),
         },
       ],
     },
-    // {
-    //   key: "/earnings",
-    //   icon: <TbDatabaseDollar size={24} />,
-    //   label: <Link to="/earnings">Earnings</Link>,
-    // },
-    // {
-    //   key: "/insight",
-    //   icon: <TbBulbFilled size={24} />,
-    //   label: <Link to="/insight">Insightful Tips</Link>,
-    // },
+
     {
       key: "/transaction",
       icon: <PiWallet size={25} />,
@@ -119,25 +117,7 @@ const Sidebar = ({ isCollapsed }) => {
         },
       ],
     },
-    // {
 
-    // {
-    //     key: "/users",
-    //     icon: <HiUserGroup size={24} />,
-    //     label: <Link to="/users">User</Link>
-    // },
-
-    /* {
-            key: "/admin",
-            icon: <MdOutlineAdminPanelSettings size={24} />,
-            label: <Link to="/admin">Make Admin</Link>
-        }, */
-
-    // {
-    //     key: "/sub-category",
-    //     icon: <BiSolidCategory size={24} />,
-    //     label: <Link to="/sub-category" >Sub Category</Link>
-    // },
     {
       key: "/support-chat",
       icon: <PiMessengerLogoBold size={24} />,
@@ -209,17 +189,15 @@ const Sidebar = ({ isCollapsed }) => {
       key: "/logout",
       icon: <FiLogOut size={24} />,
       label: isCollapsed ? null : (
-        <p onClick={handleLogout} className="text-black hover:text-black">
-          Logout
-        </p>
+        <Link
+          to="/contact"
+          className="text-white hover:text-white"
+          onClick={handleLogout}
+        >
+          Log Out
+        </Link>
       ),
     },
-
-    // {
-    //   key: "/subscription",
-    //   icon: <HiTicket size={24} />,
-    //   label: <Link to="/subscription">Subscription</Link>,
-    // },
   ];
 
   useEffect(() => {
@@ -255,11 +233,14 @@ const Sidebar = ({ isCollapsed }) => {
     >
       <Link to="/" className="flex items-center justify-center py-4 text-white">
         <div className="w-full flex items-center justify-center bg-quilocoP px-4 py-3 -mt-1.5 gap-3 rounded-lg">
-          <TbDashboard size={40} className="text-[#00017D]" />
-          {!isCollapsed && (
-            <p className="text-2xl text-[#00017D] font-semibold ">Dashboard</p>
+          {/* <TbDashboard size={40} className="text-abbes" /> */}
+          {isCollapsed ? (
+            <img src={minilogo} />
+          ) : (
+            // <p className="text-2xl text-abbes font-semibold ">Dashboard</p>
+            <img src={logo} />
           )}
-          {/* <img src={"qilocoLogo"} /> */}
+          {/* <img src={logo} /> */}
         </div>
       </Link>
 

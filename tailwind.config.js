@@ -1,4 +1,4 @@
-import Paragraph from "antd/es/skeleton/Paragraph";
+// import Paragraph from "antd/es/skeleton/Paragraph";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -9,7 +9,7 @@ export default {
         primary: "#007BA5",
         secondary: "#7CC84E",
         base: "#4E4E4E",
-        abbes: "#00017D",
+        abbes: "#fd7d00",
         paragraph: "#7E7E7E",
       },
     },

@@ -46,7 +46,7 @@ export default function RevenueAnalysis() {
   return (
     <div className="w-[68%] h-full rounded-lg bg-white">
       <div className="flex items-center justify-between px-6 my-5 relative">
-        <h1 className="text-2xl font-semibold">Customer & Service Provider</h1>
+        <h1 className="text-2xl font-semibold">Revenue Analytics</h1>
 
         <PickDate />
       </div>
@@ -58,8 +58,8 @@ export default function RevenueAnalysis() {
         >
           <defs>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#18A0FB" stopOpacity={1} />
-              <stop offset="100%" stopColor="#18A0FB" stopOpacity={0} />
+              <stop offset="0%" stopColor="#fd7d00" stopOpacity={0.5} />
+              <stop offset="100%" stopColor="#fd7d00" stopOpacity={0} />
             </linearGradient>
           </defs>
           <CartesianGrid
@@ -80,7 +80,8 @@ export default function RevenueAnalysis() {
           <Area
             type="monotone"
             dataKey="pv"
-            stroke=""
+            strokeWidth={2}
+            stroke="#fd7d00"
             fillOpacity={1}
             fill="url(#colorPv)"
           />
@@ -95,10 +96,10 @@ const CustomTooltip = ({ active, payload, label }) => {
     return (
       <div className="relative flex items-center ml-4">
         {/* Arrow (pointing left) */}
-        <div className="absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white -left-2"></div>
+        <div className="absolute w-0 h-0 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-abbes -left-1.5"></div>
 
         {/* Tooltip Content */}
-        <div className="bg-white p-2 text-black rounded shadow-md ">
+        <div className="bg-abbes p-2 text-white rounded shadow-md ">
           {payload.map((pld, index) => (
             <div key={index}>{pld.value}K</div>
           ))}

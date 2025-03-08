@@ -3,9 +3,9 @@ import { Table, Avatar, ConfigProvider, Input, Button } from "antd";
 import { SearchOutlined, DeleteOutlined } from "@ant-design/icons";
 import GetPageName from "../../../components/common/GetPageName";
 import PopOver from "../../../components/common/PopOver";
-import CustomerEditModal from "./CustomerEditModal";
+import ServiceEditModal from "./ServiceEditModal"; // Import modal
 
-function Customer() {
+function CoachList() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedRowKeys, setSelectedRowKeys] = useState([]);
   const [userData, setUserData] = useState(data);
@@ -18,12 +18,12 @@ function Customer() {
 
   const filteredData = userData.filter(
     (user) =>
-      user.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.coachName.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.phoneNumber.includes(searchQuery) ||
-      // user.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      user.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
       user.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      user.spent.toLowerCase().includes(searchQuery.toLowerCase())
+      user.earn.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const rowSelection = {
@@ -45,7 +45,7 @@ function Customer() {
       )
     );
     alert(
-      `${provider.customerName} has been ${
+      `${provider.coachName} has been ${
         provider.banned ? "unbanned" : "banned"
       }`
     );
@@ -82,9 +82,13 @@ function Customer() {
             itemActiveBg: "#18a0fb",
           },
           Button: {
-            defaultHoverBg: "#18a0fb ",
+            defaultHoverBg: "#fd7d00 ",
             defaultHoverColor: "white",
-            defaultHoverBorderColor: "#18a0fb ",
+            defaultHoverBorderColor: "#fd7d00 ",
+          },
+          Input: {
+            hoverBorderColor: "#fd7d00",
+            activeBorderColor: "#fd7d00",
           },
         },
       }}
@@ -103,7 +107,7 @@ function Customer() {
             <Button
               icon={<DeleteOutlined />}
               onClick={handleDeleteSelected}
-              className="bg-smart hover:bg-smart text-white border-none h-9"
+              className="bg-abbes/90 hover:bg-abbes text-white border-none h-9"
             >
               Delete Selected
             </Button>
@@ -125,7 +129,7 @@ function Customer() {
         }}
       />
       {/* Edit Modal */}
-      <CustomerEditModal
+      <ServiceEditModal
         isModalOpen={isModalOpen}
         handleCancel={() => setIsModalOpen(false)}
         providerData={selectedProvider}
@@ -135,13 +139,13 @@ function Customer() {
   );
 }
 
-export default Customer;
+export default CoachList;
 
 const columns = (handleEdit, handleBan) => [
   {
-    title: "Customer Name",
-    dataIndex: "customerName",
-    key: "customerName",
+    title: "Name",
+    dataIndex: "coachName",
+    key: "coachName",
     render: (text, record) => (
       <div className="flex items-center gap-2.5">
         <Avatar src={record.avatar} alt={text} shape="circle" size={40} />
@@ -152,11 +156,16 @@ const columns = (handleEdit, handleBan) => [
       </div>
     ),
   },
-
+  {
+    title: "Category",
+    dataIndex: "category",
+    key: "category",
+  },
   {
     title: "Phone Number",
     dataIndex: "phoneNumber",
     key: "phoneNumber",
+    render: (_, record) => <span>+{record.phoneNumber}</span>,
   },
   {
     title: "Address",
@@ -164,9 +173,10 @@ const columns = (handleEdit, handleBan) => [
     key: "address",
   },
   {
-    title: "Spent",
-    dataIndex: "spent",
-    key: "spent",
+    title: "Earn",
+    dataIndex: "earn",
+    key: "earn",
+    render: (_, record) => <span>${record.earn}</span>,
   },
   {
     key: "action",
@@ -182,23 +192,23 @@ const columns = (handleEdit, handleBan) => [
 const data = [
   {
     key: 1,
-    customerName: "John Doe",
+    coachName: "John Doe",
     email: "johndoe@gmail.com",
-
-    phoneNumber: "+1234567890",
+    category: "Football Coach",
+    phoneNumber: "1234567890",
     address: "10 Warehouse Road, Apapa, Lagos",
-    spent: "$5000",
+    earn: "5000",
     avatar: "",
     banned: false, // Add banned field
   },
   {
     key: 2,
-    customerName: "Jane Smith",
+    coachName: "Jane Smith",
     email: "janesmith@gmail.com",
-
-    phoneNumber: "+1234567891",
+    category: "Cricket Coach",
+    phoneNumber: "1234567891",
     address: "15 Broad Street, Lagos",
-    spent: "$4500",
+    earn: "4500",
     avatar: "",
     banned: false, // Add banned field
   },
