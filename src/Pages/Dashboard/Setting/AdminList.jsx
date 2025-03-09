@@ -83,14 +83,34 @@ const AdminList = () => {
     message.info("Admin addition cancelled.");
   };
 
+  // const handleAddAdmin = (values) => {
+  //   // Ensure characters after ".com" are removed
+  //   const cleanEmail = values.email.replace(/\.com.*/i, ".com");
+
+  //   const newAdmin = {
+  //     key: admins.length + 1,
+  //     ...values,
+  //     email: cleanEmail, // Apply cleaned email
+  //     creationdate: new Date().toLocaleDateString(),
+  //   };
+
+  //   const updatedAdmins = [...admins, newAdmin];
+  //   setAdmins(updatedAdmins);
+  //   setFilteredData(updatedAdmins);
+  //   setIsAddModalOpen(false);
+  //   addFormRef.current?.resetFields();
+
+  //   message.success("Admin added successfully!");
+  // };
+
   const handleAddAdmin = (values) => {
-    // Ensure characters after ".com" are removed
     const cleanEmail = values.email.replace(/\.com.*/i, ".com");
 
     const newAdmin = {
       key: admins.length + 1,
-      ...values,
-      email: cleanEmail, // Apply cleaned email
+      name: values.name,
+      email: cleanEmail,
+      role: "Admin", // Ensure role is always Admin
       creationdate: new Date().toLocaleDateString(),
     };
 
@@ -230,11 +250,18 @@ const AdminList = () => {
             >
               <Input placeholder="Email" className="h-10" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               label="Role"
               name="role"
               value="Admin"
               rules={[{ required: false, message: "Please enter Role" }]}
+            >
+              <Input placeholder="Role" className="h-10" disabled />
+            </Form.Item> */}
+            <Form.Item
+              label="Role"
+              name="role"
+              initialValue="Admin" // Automatically sets the value
             >
               <Input placeholder="Role" className="h-10" disabled />
             </Form.Item>
