@@ -10,6 +10,7 @@ import {
   Form,
   ConfigProvider,
   message,
+  Select,
 } from "antd";
 import { MoreOutlined, DeleteFilled, EditFilled } from "@ant-design/icons";
 
@@ -273,6 +274,10 @@ const AdminList = () => {
                 hoverBorderColor: "#fd7d00",
                 activeBorderColor: "#fd7d00",
               },
+              Select: {
+                hoverBorderColor: "#fd7d00",
+                activeBorderColor: "#fd7d00",
+              },
             },
           }}
         >
@@ -311,14 +316,24 @@ const AdminList = () => {
             >
               <Input placeholder="Email" className="h-10" />
             </Form.Item>
-            <Form.Item
+            {/* <Form.Item
               label="Role"
               name="role"
               rules={[{ required: true, message: "Please enter Role" }]}
             >
               <Input placeholder="Role" className="h-10" />
+            </Form.Item> */}
+            <Form.Item
+              label="Role"
+              name="role"
+              rules={[{ required: true, message: "Please select a role" }]}
+            >
+              <Select placeholder="Select Role" className="h-10 ">
+                <Select.Option value="Admin">Admin</Select.Option>
+                <Select.Option value="Moderator">Moderator</Select.Option>
+                <Select.Option value="Super Admin">Super Admin</Select.Option>
+              </Select>
             </Form.Item>
-
             <div className="flex justify-end gap-4 mt-4">
               <ButtonEDU actionType="cancel" onClick={handleCancelEdit}>
                 Cancel

@@ -144,7 +144,7 @@ function Transaction() {
                 "Paid".charAt(0).toLocaleUpperCase()
               ? "text-sky-500 bg-sky-50 border border-sky-500 w-20 px-1.5 py-0.5 rounded-lg"
               : "text-red-500 bg-red-50 border border-red-500 w-20 px-1.5 py-0.5 rounded-lg"
-          }`}
+          } `}
         >
           {status}
         </p>

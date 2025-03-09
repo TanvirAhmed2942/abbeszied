@@ -274,3 +274,14 @@ p {
   color: #000 !important;
   border: none !important;
 }
+
+/* select */
+.ant-select-outlined:not(.ant-select-customize-input)
+  .ant-select-selector:hover {
+  border: 1px solid #fc7d01 !important;
+}
+
+.ant-select-outlined:not(.ant-select-customize-input)
+  .ant-select-selector:focus-within {
+  border: 1px solid #fc7d01 !important;
+}

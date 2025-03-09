@@ -33,6 +33,7 @@ import CoachList from "../Pages/Dashboard/Coach/CoachList.jsx";
 import CorporateList from "../Pages/Dashboard/CorporateList/CorporateList.jsx";
 import CertificateList from "../Pages/Dashboard/CertificateReview/CertificateList.jsx";
 import Category from "../Pages/Dashboard/Categoty/Category.jsx";
+import Users from "../Pages/Dashboard/User/Users.jsx";
 
 const router = createBrowserRouter([
   {
@@ -127,14 +128,6 @@ const router = createBrowserRouter([
         path: "/admin-list",
         element: <Setting />,
       },
-      {
-        path: "/category-list",
-        element: <CategoryList />,
-      },
-      {
-        path: "/service-list",
-        element: <ServiceList />,
-      },
     ],
   },
   {
@@ -162,6 +155,10 @@ const router = createBrowserRouter([
         element: <ResetPassword />,
       },
     ],
+  },
+  {
+    path: "/user-profile",
+    element: <Users />,
   },
   {
     path: "*",

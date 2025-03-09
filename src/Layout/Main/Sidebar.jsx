@@ -19,9 +19,7 @@ import {
   PiWallet,
 } from "react-icons/pi";
 import { FiLogOut } from "react-icons/fi";
-import { BiSolidCategoryAlt } from "react-icons/bi";
 import { RiContactsBook3Line, RiSettings5Line } from "react-icons/ri";
-import { MdHandyman, MdOutlineHomeRepairService } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import minilogo from "../../assets/minilogo.png";
 import { MdOutlinePrivacyTip } from "react-icons/md";
@@ -115,32 +113,6 @@ const Sidebar = ({ isCollapsed }) => {
         <Link to="/category">category</Link>
       ),
     },
-    {
-      key: "subMenuSetting3",
-      icon: <MdOutlineHomeRepairService size={24} className="text-black" />,
-      label: "Service",
-      children: [
-        {
-          key: "/category-list",
-          icon: <BiSolidCategoryAlt size={23} />,
-          label: isCollapsed ? (
-            <Link to="/category-list">Category List</Link>
-          ) : (
-            <Link to="/category-list">Category List</Link>
-          ),
-        },
-        {
-          key: "/service-list",
-          icon: <MdHandyman size={24} />,
-          label: isCollapsed ? (
-            <Link to="/service-list">Service List</Link>
-          ) : (
-            <Link to="/service-list">Service List</Link>
-          ),
-        },
-      ],
-    },
-
     {
       key: "/support-chat",
       icon: <PiMessengerLogoBold size={24} />,
@@ -250,11 +222,14 @@ const Sidebar = ({ isCollapsed }) => {
 
   return (
     <div
-      className={`bg-quilocoP h-full shadow-md transition-all duration-300 overflow-auto ${
+      className={`bg-quilocoP h-full shadow-md transition-all duration-300  overflow-auto ${
         isCollapsed ? "w-[80px]" : "w-[280px]"
       }`}
     >
-      <Link to="/" className="flex items-center justify-center py-4 text-white">
+      <Link
+        to="/"
+        className="flex items-center justify-center py-4 text-white "
+      >
         <div className="w-full flex items-center justify-center bg-quilocoP px-4 py-3 -mt-1.5 gap-3 rounded-lg">
           {/* <TbDashboard size={40} className="text-abbes" /> */}
           {isCollapsed ? (
@@ -272,7 +247,7 @@ const Sidebar = ({ isCollapsed }) => {
         selectedKeys={[selectedKey]}
         style={{ background: "#ffffff" }}
         items={menuItems}
-        className="text-white mt-10"
+        className="text-white mt-10 "
       />
     </div>
   );

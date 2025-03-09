@@ -5,6 +5,7 @@ import {
   useReadMutation,
 } from "../../redux/apiSlices/notificationSlice";
 import toast from "react-hot-toast";
+import { FaRegBell } from "react-icons/fa6";
 
 const Notifications = () => {
   const [page, setPage] = useState(1);
@@ -25,10 +26,10 @@ const Notifications = () => {
     }
   };
   return (
-    <div className="px-14 mt-10">
+    <div className="py-5">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-[22px]">All Notifications</h2>
-        <button className="bg-gtdandy text-white h-10 px-4 rounded-md">
+        <button className="bg-gtdandy  text-slate-50 text-[18px] border rounded-lg h-10 px-4 bg-abbes ">
           Read All
         </button>
       </div>
@@ -40,7 +41,8 @@ const Notifications = () => {
               key={index}
               className="border-b-[1px] pb-2 border-[#d9d9d9] flex items-center gap-3"
             >
-              <img
+              <FaRegBell size={40} className="text-abbes" />
+              {/* <img
                 style={{
                   height: "50px",
                   width: "50px",
@@ -48,7 +50,7 @@ const Notifications = () => {
                   border: "2px solid gray",
                 }}
                 src="https://img.freepik.com/free-photo/everything-is-okay-cheerful-friendly-looking-caucasian-guy-with-moustache-beard-raising-hand-with-ok-great-gesture-giving-approval-like-having-situation-control_176420-22386.jpg"
-              />
+              /> */}
               <div>
                 <p>
                   <span>Sanchez haro manuel</span> start a new trip at 5pm. Trip
@@ -66,12 +68,11 @@ const Notifications = () => {
           theme={{
             components: {
               Pagination: {
-                itemActiveBg: "#FFC301",
-                itemBg: "black",
-                borderRadius: "50px",
-                colorText: "white",
+                borderRadius: "3px",
+                itemActiveBg: "#18a0fb",
               },
             },
+
             token: {
               colorPrimary: "white",
             },
