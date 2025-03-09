@@ -1,12 +1,14 @@
 import React from "react";
 
-const ButtonEDU = ({ actionType, onClick, children }) => {
+const ButtonEDU = ({ actionType, onClick, children, className }) => {
   const getButtonStyles = () => {
     switch (actionType) {
       case "add":
         return "bg-abbes text-white w-28 h-10 rounded-md border border-abbes transition-all duration-300 hover:bg-transparent hover:text-abbes";
       case "update":
         return "bg-abbes text-white w-28 h-10 rounded-md border border-abbes transition-all duration-300 hover:bg-transparent hover:text-abbes";
+      case "save":
+        return `bg-abbes text-white min-w-28 h-10 rounded-md border border-abbes transition-all duration-300 hover:bg-transparent hover:text-abbes ${className}`;
       case "edit":
         return "bg-abbes text-white w-28 h-10 rounded-md border border-abbes transition-all duration-300 hover:bg-transparent hover:text-abbes";
       case "delete":

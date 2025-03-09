@@ -1,5 +1,7 @@
 import { Button, Form, Input, ConfigProvider } from "antd";
 import React from "react";
+import { MdLock } from "react-icons/md";
+
 import { useNavigate } from "react-router-dom";
 
 const ResetPassword = () => {
@@ -21,10 +23,18 @@ const ResetPassword = () => {
             Form: {
               labelColor: "black",
             },
+            Input: {
+              hoverBorderColor: "#fd7d00",
+              activeBorderColor: "#fd7d00",
+            },
           },
         }}
       >
-        <Form layout="vertical" onFinish={onFinish}>
+        <Form
+          layout="vertical"
+          onFinish={onFinish}
+          className="flex flex-col gap-3"
+        >
           <Form.Item
             name="newPassword"
             label={
@@ -44,20 +54,16 @@ const ResetPassword = () => {
                 message: "Please input your new Password!",
               },
             ]}
-            style={{ marginBottom: 0 }}
+            style={{ marginBottom: 6 }}
           >
             <Input.Password
               type="password"
+              prefix={
+                <MdLock className="border-r-2 w-full h-10 mr-2  p-2 -ml-2 text-abbes " />
+              }
               placeholder="Enter New password"
-              style={{
-                border: "1px solid #E0E4EC",
-                height: "52px",
-                background: "white",
-                borderRadius: "8px",
-
-                outline: "none",
-              }}
-              className="mb-6"
+              // className="border-[#E0E4EC] hover:border-abbes h-10 bg-white rounded-lg outline-none "
+              className="border-[#E0E4EC] focus:border-orange-500 hover:border-orange-500 h-10 bg-white rounded-lg outline-none"
             />
           </Form.Item>
 
@@ -96,15 +102,19 @@ const ResetPassword = () => {
           >
             <Input.Password
               type="password"
+              prefix={
+                <MdLock className="border-r-2 w-full h-10 mr-2  p-2 -ml-2 text-abbes " />
+              }
               placeholder="Enter Confirm password"
-              style={{
-                border: "1px solid #E0E4EC",
-                height: "52px",
-                background: "white",
-                borderRadius: "8px",
-                outline: "none",
-              }}
-              className="mb-6"
+              // style={{
+              //   border: "1px solid #E0E4EC",
+              //   height: "52px",
+              //   background: "white",
+              //   borderRadius: "8px",
+              //   outline: "none",
+              // }}
+              // className="border-[#E0E4EC] hover:border-abbes h-10 bg-white rounded-lg outline-none "
+              className="border-[#E0E4EC] focus:border-orange-500 hover:border-orange-500 h-10 bg-white rounded-lg outline-none"
             />
           </Form.Item>
 
@@ -117,8 +127,8 @@ const ResetPassword = () => {
                 color: "white",
                 fontWeight: "400px",
                 fontSize: "18px",
-                border: "1px solid #18a0fb",
-                background: "#18a0fb ",
+                border: "1px solid #fc7d01",
+                background: "#fc7d01 ",
                 marginTop: 20,
               }}
             >

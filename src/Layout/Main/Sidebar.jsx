@@ -1,6 +1,4 @@
-import { FaHandsHelping } from "react-icons/fa";
 import {
-  FaDiagramProject,
   FaGoogleScholar,
   FaPersonDotsFromLine,
   FaPersonWalkingLuggage,
@@ -11,25 +9,23 @@ import { Menu } from "antd";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LuClipboardList } from "react-icons/lu";
-import { TbBellBolt, TbDashboard, TbListDetails } from "react-icons/tb";
-import { HiOutlineUsers, HiUsers } from "react-icons/hi";
+import { TbBellBolt } from "react-icons/tb";
+import { HiOutlineUsers } from "react-icons/hi";
 import { RxDashboard } from "react-icons/rx";
-import { PiMessengerLogoBold, PiWallet } from "react-icons/pi";
-import { FiLogOut, FiUsers } from "react-icons/fi";
-import { BiSolidCategoryAlt } from "react-icons/bi";
 import {
-  RiContactsBook3Line,
-  RiMoneyDollarCircleLine,
-  RiSettings5Line,
-} from "react-icons/ri";
+  PiCertificateBold,
+  PiListBulletsBold,
+  PiMessengerLogoBold,
+  PiWallet,
+} from "react-icons/pi";
+import { FiLogOut } from "react-icons/fi";
+import { BiSolidCategoryAlt } from "react-icons/bi";
+import { RiContactsBook3Line, RiSettings5Line } from "react-icons/ri";
 import { MdHandyman, MdOutlineHomeRepairService } from "react-icons/md";
 import logo from "../../assets/logo.png";
 import minilogo from "../../assets/minilogo.png";
 import { MdOutlinePrivacyTip } from "react-icons/md";
-import { MdHomeRepairService } from "react-icons/md";
 import { IoDocumentTextOutline } from "react-icons/io5";
-import { icons } from "antd/es/image/PreviewGroup";
-import { min } from "moment/moment";
 
 const Sidebar = ({ isCollapsed }) => {
   const location = useLocation();
@@ -92,7 +88,15 @@ const Sidebar = ({ isCollapsed }) => {
         },
       ],
     },
-
+    {
+      key: "/certificate-review",
+      icon: <PiCertificateBold size={25} />,
+      label: isCollapsed ? (
+        <Link to="/certificate-review">Certificate Review</Link>
+      ) : (
+        <Link to="/certificate-review">Certificate Review</Link>
+      ),
+    },
     {
       key: "/transaction",
       icon: <PiWallet size={25} />,
@@ -100,6 +104,15 @@ const Sidebar = ({ isCollapsed }) => {
         <Link to="/transaction">Transaction</Link>
       ) : (
         <Link to="/transaction">Transaction</Link>
+      ),
+    },
+    {
+      key: "/category",
+      icon: <PiListBulletsBold size={25} />,
+      label: isCollapsed ? (
+        <Link to="/category">category</Link>
+      ) : (
+        <Link to="/category">category</Link>
       ),
     },
     {
@@ -200,7 +213,7 @@ const Sidebar = ({ isCollapsed }) => {
       icon: <FiLogOut size={24} />,
       label: isCollapsed ? null : (
         <Link
-          to="/contact"
+          to="/auth/login"
           className="text-white hover:text-white"
           onClick={handleLogout}
         >
@@ -237,7 +250,7 @@ const Sidebar = ({ isCollapsed }) => {
 
   return (
     <div
-      className={`bg-quilocoP h-full shadow-md transition-all duration-300 ${
+      className={`bg-quilocoP h-full shadow-md transition-all duration-300 overflow-auto ${
         isCollapsed ? "w-[80px]" : "w-[280px]"
       }`}
     >

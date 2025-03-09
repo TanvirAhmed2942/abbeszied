@@ -1,5 +1,6 @@
 import { Button, Form, Input, ConfigProvider } from "antd";
 import React from "react";
+import { IoMail } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
 
 const ForgotPassword = () => {
@@ -12,7 +13,7 @@ const ForgotPassword = () => {
   return (
     <div>
       <div className="text-center mb-8">
-        <h1 className="text-[25px] font-semibold mb-6">Forgot Password</h1>
+        <h1 className="text-[25px] font-semibold mb-2">Forgot Password</h1>
         <p className="w-[90%] mx-auto text-base">
           Enter your email below to reset your password
         </p>
@@ -23,6 +24,10 @@ const ForgotPassword = () => {
           components: {
             Form: {
               labelColor: "black",
+            },
+            Input: {
+              hoverBorderColor: "#fd7d00",
+              activeBorderColor: "#fd7d00",
             },
           },
         }}
@@ -41,12 +46,10 @@ const ForgotPassword = () => {
           >
             <Input
               placeholder="Enter your email address"
-              style={{
-                height: 45,
-                border: "1px solid #d9d9d9",
-                outline: "none",
-                boxShadow: "none",
-              }}
+              prefix={
+                <IoMail className="border-r-2 w-full h-10 mr-2  p-2 -ml-2 text-abbes " />
+              }
+              className="h-10 border-[#d9d9d9] outline-none "
             />
           </Form.Item>
 
@@ -63,7 +66,7 @@ const ForgotPassword = () => {
 
                 marginTop: 20,
               }}
-              className="flex items-center justify-center bg-smart rounded-lg"
+              className="flex items-center justify-center bg-abbes rounded-lg"
             >
               Send OTP
             </button>

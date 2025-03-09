@@ -18,7 +18,7 @@ const VerifyOtp = () => {
   return (
     <div>
       <div className="text-center mb-6">
-        <h1 className="text-[25px] font-semibold mb-6">Verify OTP</h1>
+        <h1 className="text-[25px] font-semibold mb-2">Verify OTP</h1>
         <p className="w-[80%] mx-auto">
           We'll send a verification code to your email. Check your inbox and
           enter the code here.
@@ -37,8 +37,8 @@ const VerifyOtp = () => {
               borderRadius: "8px",
               margin: "16px",
               fontSize: "20px",
-              border: "1px solid #18a0fb ",
-              color: "#18a0fb",
+              border: "1px solid #fc7d01 ",
+              color: "#fc7d01",
               outline: "none",
               marginBottom: 10,
             }}
@@ -52,7 +52,7 @@ const VerifyOtp = () => {
           <p
             onClick={handleResendEmail}
             className="login-form-forgot font-medium"
-            style={{ color: "#18a0fb ", cursor: "pointer" }}
+            style={{ color: "#fc7d01 ", cursor: "pointer" }}
           >
             Resend
           </p>
@@ -64,10 +64,10 @@ const VerifyOtp = () => {
             style={{
               width: "100%",
               height: 45,
-              border: "1px solid #18a0fb ",
+              border: "1px solid #fc7d01 ",
               outline: "none",
               boxShadow: "none",
-              background: "#18a0fb ",
+              background: "#fc7d01 ",
               color: "white",
             }}
           >

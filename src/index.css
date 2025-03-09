@@ -220,6 +220,10 @@ p {
   height: 130px;
   background-color: #ffffff;
 }
+.ant-upload-wrapper.ant-upload-picture-card-wrapper
+  .ant-upload.ant-upload-select:hover {
+  border: 1px dashed #fc7d01 !important;
+}
 
 .jodit-container:not(.jodit_inline) {
   border-radius: 5px;

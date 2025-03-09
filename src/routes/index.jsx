@@ -31,6 +31,8 @@ import ChatRoom from "../Pages/Dashboard/SupportChat/ChatRoom.jsx";
 import TraineeList from "../Pages/Dashboard/Trainee/TraineeList.jsx";
 import CoachList from "../Pages/Dashboard/Coach/CoachList.jsx";
 import CorporateList from "../Pages/Dashboard/CorporateList/CorporateList.jsx";
+import CertificateList from "../Pages/Dashboard/CertificateReview/CertificateList.jsx";
+import Category from "../Pages/Dashboard/Categoty/Category.jsx";
 
 const router = createBrowserRouter([
   {
@@ -47,10 +49,18 @@ const router = createBrowserRouter([
         path: "/coach-list",
         element: <CoachList />,
       },
+      {
+        path: "/certificate-review",
+        element: <CertificateList />,
+      },
 
       {
         path: "/transaction",
         element: <Transaction />,
+      },
+      {
+        path: "/category",
+        element: <Category />,
       },
       {
         path: "/corporate-list",

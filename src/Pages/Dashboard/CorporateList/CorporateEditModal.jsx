@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Modal,
   Form,
@@ -18,6 +18,7 @@ const CorporateEditModal = ({
   onSave,
 }) => {
   const [form] = Form.useForm();
+  const [uploadedImage, setUploadedImage] = useState(null);
 
   useEffect(() => {
     if (providerData) {
@@ -27,8 +28,17 @@ const CorporateEditModal = ({
 
   const handleFormSubmit = (values) => {
     const updatedProvider = { ...providerData, ...values };
+    if (uploadedImage) {
+      updatedProvider.avatar = uploadedImage;
+    }
     onSave(updatedProvider);
   };
+
+  useEffect(() => {
+    if (providerData) {
+      form.setFieldsValue(providerData);
+    }
+  }, [providerData, form]);
 
   const validatePhoneNumber = (_, value) => {
     const phoneRegex = /^[0-9]+$/;
@@ -45,33 +55,6 @@ const CorporateEditModal = ({
     }
     return Promise.resolve();
   };
-
-  const validateEarnings = (_, value) => {
-    if (!value) {
-      return Promise.reject(new Error("Earnings amount is required"));
-    }
-    if (isNaN(value)) {
-      return Promise.reject(new Error("Earnings must be a number"));
-    }
-    if (parseFloat(value) < 0) {
-      return Promise.reject(new Error("Earnings cannot be negative"));
-    }
-    return Promise.resolve();
-  };
-
-  const validateEmail = (_, value) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.com$/;
-    if (!value) {
-      return Promise.reject(new Error("Email is required"));
-    }
-    if (!emailRegex.test(value)) {
-      return Promise.reject(
-        new Error("Please enter a valid .com email address")
-      );
-    }
-    return Promise.resolve();
-  };
-
   const beforeUpload = (file) => {
     const isJpgOrPng = file.type === "image/jpeg" || file.type === "image/png";
     if (!isJpgOrPng) {
@@ -83,6 +66,12 @@ const CorporateEditModal = ({
       message.error("Image must be smaller than 2MB!");
       return Upload.LIST_IGNORE;
     }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      setUploadedImage(e.target.result);
+    };
+    reader.readAsDataURL(file);
     return false;
   };
 
@@ -111,11 +100,10 @@ const CorporateEditModal = ({
         onCancel={handleCancel}
         centered
         footer={[
-          <div className="w-full flex justify-end">
+          <div className="w-full flex justify-end" key="footer-buttons">
             <ButtonEDU actionType="cancel" onClick={handleCancel}>
               Cancel
             </ButtonEDU>
-            ,
             <ButtonEDU
               actionType="save"
               type="primary"
@@ -137,20 +125,6 @@ const CorporateEditModal = ({
             <Input className="h-9 text-sm" />
           </Form.Item>
           <Form.Item
-            label={<p className="font-medium text-black">Email</p>}
-            name="email"
-            rules={[{ validator: validateEmail }]}
-          >
-            <Input className="h-9 text-sm" />
-          </Form.Item>
-          <Form.Item
-            label={<p className="font-medium text-black">Category</p>}
-            name="category"
-            rules={[{ required: true, message: "Category is required" }]}
-          >
-            <Input className="h-9 text-sm" />
-          </Form.Item>
-          <Form.Item
             label={<p className="font-medium text-black">Phone Number</p>}
             name="phoneNumber"
             rules={[{ validator: validatePhoneNumber }]}
@@ -164,10 +138,29 @@ const CorporateEditModal = ({
           >
             <Input className="h-9 text-sm" />
           </Form.Item>
+          <Form.Item
+            label={<p className="font-medium text-black">Job Post</p>}
+            name="jobPost"
+            rules={[{ required: true, message: "Job Post is required" }]}
+          >
+            <Input className="h-9 text-sm" />
+          </Form.Item>
+
           <Form.Item label="Upload Profile Picture">
-            <Upload beforeUpload={beforeUpload} maxCount={1}>
+            <Upload
+              beforeUpload={beforeUpload}
+              maxCount={1}
+              showUploadList={false}
+            >
               <Button icon={<UploadOutlined />}>Click to Upload</Button>
             </Upload>
+            {uploadedImage && (
+              <img
+                src={uploadedImage}
+                alt="Avatar Preview"
+                className="mt-2 w-16 h-16 rounded-full border"
+              />
+            )}
           </Form.Item>
         </Form>
       </Modal>
