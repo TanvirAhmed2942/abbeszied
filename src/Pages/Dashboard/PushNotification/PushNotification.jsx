@@ -52,8 +52,13 @@ function PushNotification() {
                 labelFontSize: 16,
               },
               Input: {
-                hoverBorderColor: "#00027d",
-                activeBorderColor: "#00027d",
+                hoverBorderColor: "#fc7d01",
+                activeBorderColor: "#fc7d01",
+              },
+              Button: {
+                defaultActiveBorderColor: "#fc7d01",
+                defaultHoverBorderColor: "#fc7d01",
+                defaultHoverColor: "#fc7d01",
               },
             },
           }}
